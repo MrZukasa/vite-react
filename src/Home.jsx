@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import BlogList from './BlogList'
 
 const Home = () => {
     //let name = 'Luigi';      //<-- variabile non reattiva
     const[name, setName] = useState('Luigi');      //<-- variabile reattiva
-    //!questo hook restituisce due valori e dobbiamo quindi metterli in un array
+    //*questo hook restituisce due valori e dobbiamo quindi metterli in un array
     
     const handleClick = () => {
         console.log('hey');
@@ -20,11 +21,27 @@ const Home = () => {
             setName('Luigi');
         }
     }
+    // --------------------------------------------------------------------------
+    const [blogs, setBlogs] = useState([
+        {title: 'My new website', body: 'lorem ipsum...', author: 'Mario', id:1},
+        {title: 'Welcome party!', body: 'lorem ipsum...', author: 'Luigi', id:2},
+        {title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Yoshi', id:3},
+    ]);
+
+    // passo questi dati da Home a BlogList come props
     
     return (
         <div className="Home">
             <div className="h2" class="text-4xl">
                 <p>Homepage</p>
+            </div>
+
+            {/* per stampare gli oggetti creati come blogs, uso il metodo javascript .map
+                ogni elemento dell'array lo stampo dentro un div che chiamo preview e lo
+                lego alla chiave blog.id cosi da renderlo univoco */}
+
+            <div className="print">
+                <BlogList blogs={blogs}/>     {/* qui è dove passo la props */}
             </div>
 
             <div className="button">
@@ -53,8 +70,8 @@ const Home = () => {
                     <span>Change Name</span>
                 </button>                
             </div>
-
             <p>{name}</p>
+
         </div>
     );
 }
