@@ -1,0 +1,16 @@
+{
+    "blogs":[
+        {
+            "title": "My First Blog",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse odio dui, tincidunt quis viverra hendrerit, tempor at nisl. Etiam velit erat, efficitur at nisl vitae, porta scelerisque eros. Cras eu mollis enim. Maecenas sagittis, ligula at lacinia bibendum, mauris erat blandit metus, eu porta metus mi vitae arcu. Nullam dignissim id est id suscipit. Praesent eget ex lorem. Maecenas id finibus tellus. Pellentesque at metus at arcu varius lobortis eget id tellus. Cras mollis tempus leo, a suscipit felis mollis in. Praesent dolor ligula, mollis at metus in, commodo tincidunt sem. Duis congue orci risus, vitae interdum justo consectetur sed.",
+            "author":"Mario",
+            "id": 1
+        },
+        {
+            "title": "Opening Party!",
+            "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse odio dui, tincidunt quis viverra hendrerit, tempor at nisl. Etiam velit erat, efficitur at nisl vitae, porta scelerisque eros. Cras eu mollis enim. Maecenas sagittis, ligula at lacinia bibendum, mauris erat blandit metus, eu porta metus mi vitae arcu. Nullam dignissim id est id suscipit. Praesent eget ex lorem. Maecenas id finibus tellus. Pellentesque at metus at arcu varius lobortis eget id tellus. Cras mollis tempus leo, a suscipit felis mollis in. Praesent dolor ligula, mollis at metus in, commodo tincidunt sem. Duis congue orci risus, vitae interdum justo consectetur sed.",
+            "author":"Yoshi",
+            "id": 2
+        }
+    ]
+}

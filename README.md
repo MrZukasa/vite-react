@@ -39,3 +39,11 @@
 | hoc |	Higher Order Component |
 | cp | Context Provider |
 | cpf |	Class Property Function |
+
+In questo progetto uso anche [json-server](https://github.com/typicode/json-server).
+
+il comando per far partire json-server è
+```sh
+npx json-server --watch .\data\db.json --port 8000
+```
+>N.B per JSON Server blogs:[] è una risorsa, quindi verrà usata come enrypoint

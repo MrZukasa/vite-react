@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { data } from 'autoprefixer';
+import { useState,useEffect } from 'react';
 import BlogList from './BlogList'
 
 const Home = () => {
@@ -23,12 +24,43 @@ const Home = () => {
     }
     // --------------------------------------------------------------------------
     const [blogs, setBlogs] = useState([
-        {title: 'My new website', body: 'lorem ipsum...', author: 'Mario', id:1},
-        {title: 'Welcome party!', body: 'lorem ipsum...', author: 'Luigi', id:2},
-        {title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Yoshi', id:3},
+        // {title: 'My new website', body: 'lorem ipsum...', author: 'Mario', id:1},
+        // {title: 'Welcome party!', body: 'lorem ipsum...', author: 'Luigi', id:2},
+        // {title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Yoshi', id:3}
+        //fetcho dal json database
     ]);
 
+    const [isPending, setIsPending] = useState(true);
+    const [error, setError] = useState(null);
+
+    //*vecchia procedura di delete con il filter
+    // const handleDelete = (id) => {
+    //     const newBlogs = blogs.filter(blog => blog.id !== id);             //restituisce un array filtrato
+    //     setBlogs(newBlogs);
+    // }
     // passo questi dati da Home a BlogList come props
+
+    //useEffect Hook si triggera ad ogni render
+    useEffect(() => {
+        fetch('http://localhost:8000/blogs')
+            .then(res => {
+                if(!res.ok){
+                    throw Error('Failed to fetch the resource');
+                }
+                return res.json()
+            })
+            .then(data => {
+                setBlogs(data);
+                setIsPending(false);
+                setError(null);
+            })
+            .catch(err => {
+                setError(err.message);
+                setIsPending(false);
+            })
+    },[]);
+    //le parentesi servono a far partire l'evento solo al primo render, qui si possono inserire diverse Dipendencies
+    //se dentro le parentesi metto una variabile, farò triggerare l'hook al cambio di quella variabile specifica
     
     return (
         <div className="Home">
@@ -41,9 +73,13 @@ const Home = () => {
                 lego alla chiave blog.id cosi da renderlo univoco */}
 
             <div className="print">
-                <BlogList blogs={blogs}/>     {/* qui è dove passo la props */}
+                {error && <div class="flex items-center font-medium text-red-500 mt-2 mb-2">{error}</div>}
+                {isPending && <div class="italic mt-3">Loading...</div>}    {/*render condizionale*/}
+                <BlogList blogs={blogs}/>      {/*qui è dove passo le props caso in qui caricassi i dati a mano */}
+                {/* { blogs && <BlogList blogs={blogs} handleDelete={handleDelete} /> } */}
             </div>
-
+            
+            <div className="container" class="mt-10">
             <div className="button">
                 <button onClick={handleClick}>
                     <svg class="w-6 h-6 mr-auto inline-flex items-center" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -68,10 +104,10 @@ const Home = () => {
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
                 </svg>
                     <span>Change Name</span>
-                </button>                
+                </button>
             </div>
             <p>{name}</p>
-
+            </div>
         </div>
     );
 }
