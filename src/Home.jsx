@@ -1,6 +1,8 @@
 import { data } from 'autoprefixer';
 import { useState,useEffect } from 'react';
 import BlogList from './BlogList'
+import useFetch from './useFetch'
+
 
 const Home = () => {
     //let name = 'Luigi';      //<-- variabile non reattiva
@@ -16,22 +18,16 @@ const Home = () => {
     
     const changeName = () => {
         if (name === 'Luigi') {
-            setName('Todd');        
+            setName('Todd');
         }
         else {
             setName('Luigi');
         }
     }
     // --------------------------------------------------------------------------
-    const [blogs, setBlogs] = useState([
-        // {title: 'My new website', body: 'lorem ipsum...', author: 'Mario', id:1},
-        // {title: 'Welcome party!', body: 'lorem ipsum...', author: 'Luigi', id:2},
-        // {title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Yoshi', id:3}
-        //fetcho dal json database
-    ]);
 
-    const [isPending, setIsPending] = useState(true);
-    const [error, setError] = useState(null);
+    //prendo quello che la mia funzione mi restituisce e lo dichiaro e uso qui
+    const { data: blogs, isPending, error } = useFetch('http://localhost:8000/blogs');
 
     //*vecchia procedura di delete con il filter
     // const handleDelete = (id) => {
@@ -40,28 +36,6 @@ const Home = () => {
     // }
     // passo questi dati da Home a BlogList come props
 
-    //useEffect Hook si triggera ad ogni render
-    useEffect(() => {
-        fetch('http://localhost:8000/blogs')
-            .then(res => {
-                if(!res.ok){
-                    throw Error('Failed to fetch the resource');
-                }
-                return res.json()
-            })
-            .then(data => {
-                setBlogs(data);
-                setIsPending(false);
-                setError(null);
-            })
-            .catch(err => {
-                setError(err.message);
-                setIsPending(false);
-            })
-    },[]);
-    //le parentesi servono a far partire l'evento solo al primo render, qui si possono inserire diverse Dipendencies
-    //se dentro le parentesi metto una variabile, farò triggerare l'hook al cambio di quella variabile specifica
-    
     return (
         <div className="Home">
             <div className="h2" class="text-4xl">

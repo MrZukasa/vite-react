@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
     return (
         <nav className="navbar" class="flex justify-center border-b-2 border-gray-200 mt-4">
@@ -6,8 +8,11 @@ const Navbar = () => {
             </div>
             
             <div className="links" class="m-auto">
-                <a href="/" class="pr-2 cursor-pointer hover:text-red-300">Home</a>
-                <a href="/create" class="pr-2 cursor-pointer hover:text-red-300">New Blog</a>
+                {/* <a href="/" class="pr-2 cursor-pointer hover:text-red-300">Home</a>
+                <a href="/create" class="pr-2 cursor-pointer hover:text-red-300">New Blog</a> */}
+                {/*aggiungo il tag link per far si che ad ogni click si eviti di passare dal server, ma si rimanga sempre client side*/}
+                <Link to="/" class="pr-2 cursor-pointer hover:text-red-300">Home</Link>
+                <Link to="/create" class="pr-2 cursor-pointer hover:text-red-300">New Blog</Link>
             </div>
         </nav>
     );

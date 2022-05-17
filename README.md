@@ -47,3 +47,8 @@ il comando per far partire json-server è
 npx json-server --watch .\data\db.json --port 8000
 ```
 >N.B per JSON Server blogs:[] è una risorsa, quindi verrà usata come enrypoint
+
+Per la parte relativa al routing ho usato react-router-dom
+```
+npm install react-router-dom@5
+```
