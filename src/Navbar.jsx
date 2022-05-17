@@ -11,8 +11,8 @@ const Navbar = () => {
                 {/* <a href="/" class="pr-2 cursor-pointer hover:text-red-300">Home</a>
                 <a href="/create" class="pr-2 cursor-pointer hover:text-red-300">New Blog</a> */}
                 {/*aggiungo il tag link per far si che ad ogni click si eviti di passare dal server, ma si rimanga sempre client side*/}
-                <Link to="/" class="pr-2 cursor-pointer hover:text-red-300">Home</Link>
-                <Link to="/create" class="pr-2 cursor-pointer hover:text-red-300">New Blog</Link>
+                <Link to="/" class="pr-5 cursor-pointer hover:text-red-300">Home</Link>
+                <Link to="/create" class="pr-5 cursor-pointer hover:text-red-300">New Blog</Link>
             </div>
         </nav>
     );
