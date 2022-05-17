@@ -35,7 +35,7 @@ const useFetch = (url) => {
                 setError(err.message);
                 setIsPending(false);
             })
-    },[]);
+    },[url]);
     //le parentesi servono a far partire l'evento solo al primo render, qui si possono inserire diverse Dipendencies
     //se dentro le parentesi metto una variabile, farò triggerare l'hook al cambio di quella variabile specifica
     return { data, isPending, error }

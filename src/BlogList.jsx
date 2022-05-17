@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 const BlogList = ({blogs}) => {
     // const blogs = props.blogs;
     // raccolgo la props passata come parametro e la assegno ad una variabile
@@ -7,8 +8,10 @@ const BlogList = ({blogs}) => {
         <div className="blog-list">
             {blogs.map((blog) => (
                 <div className="blog-preview" key={blog.id}>
-                    <p className="title">{blog.title}</p>
-                    <p class="italic ml-2"> Written by {blog.author}</p>
+                    <Link to={`/blog/${blog.id}`}>
+                        <p className="title">{blog.title}</p>
+                        <p class="italic ml-2"> Written by {blog.author}</p>
+                    </Link>
                     <div className="button">
                         <button>
                             <svg class="w-5 h-5 max-w-fit inline-flex items-center" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

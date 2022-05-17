@@ -1,7 +1,7 @@
 import { data } from 'autoprefixer';
-import { useState,useEffect } from 'react';
-import BlogList from './BlogList'
-import useFetch from './useFetch'
+import { useState } from 'react';
+import BlogList from './BlogList';
+import useFetch from './useFetch';
 
 
 const Home = () => {
@@ -47,7 +47,7 @@ const Home = () => {
                 lego alla chiave blog.id cosi da renderlo univoco */}
 
             <div className="print">
-                {error && <div class="flex items-center font-medium text-red-500 mt-2 mb-2">{error}</div>}
+                {error && <div className="errormsg">{error}</div>}
                 {isPending && <div class="italic mt-3">Loading...</div>}    {/*render condizionale*/}
                 <BlogList blogs={blogs}/>      {/*qui è dove passo le props caso in qui caricassi i dati a mano */}
                 {/* { blogs && <BlogList blogs={blogs} handleDelete={handleDelete} /> } */}
