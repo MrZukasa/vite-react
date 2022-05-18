@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
     const [title, setTitles] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('Mario');
     const [response, setResponse] = useState();
+    const history = useHistory();
 
     //creo la funzione che raccoglie i dati dal menu e li spara dentro il json
     const handleSubmit = (e) => {
@@ -17,7 +19,8 @@ const Create = () => {
             body: JSON.stringify(blog)
         }).then(() => {
             setResponse('Blog added successfully!!');
-        })
+            setTimeout(()=>{history.push('/')},3000);                 //per simulare qualcosa di realistico in termini di attesa
+        })        
     }
 
     return (

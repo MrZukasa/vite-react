@@ -2,8 +2,10 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 //si importano qui le librerie per il routing, cosi che in ogni componente siano definite
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
             </Route>
             <Route path="/blog/:id">       {/* questo tipo di routing rappresenta un parametro dinamico si chiama 'route parameter' */}
               <BlogDetails/>
+            </Route>
+            <Route path="*">               {/* questo significa tutte le route diverse da quelle esistenti*/}
+              <NotFound/>
             </Route>
           </Switch>
         </div>
